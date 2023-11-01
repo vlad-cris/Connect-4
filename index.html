@@ -15,7 +15,11 @@
         <div class="mt-4 text-center fw-bold fs-2 text-info d-flex justify-content-center">
             Player 1 wil have <div class="text-danger mx-2">RED</div> color, player 2 will have <div class="text-primary mx-2">BLUE</div>color.
         </div>
-        <div class="mt-4 text-center text-info fw-bold fs-2">Round for Player <span id="playerRound"></span></div>
+        <div id="round" class="mt-4 text-center text-info fw-bold fs-2">Round for Player <span id="playerRound"></span></div>
+        <div id="winner" class="mt-4 text-center text-success fw-bold fs-1" hidden></div>
+        <div id ="restart" class="mt-4 text-center" hidden>
+            <button onclick="restart()" class="btn btn-outline-primary fw-bolder fs-2">Restart</button>
+        </div>
     </div>
     <script src="./index.js"></script>
 </body>
