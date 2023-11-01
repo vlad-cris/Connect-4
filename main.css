@@ -1,0 +1,15 @@
+#board {
+    width: 700px;
+}
+
+.unit {
+    width: 100px;
+    height: 100px;
+}
+
+.subunit { 
+    margin: 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
