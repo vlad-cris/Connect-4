@@ -1,6 +1,13 @@
+This is an implementation from learn.wellcode.ro, with this tasks:
+
+```
 Connect 4
-Să se implementeze jocul clasic de connect 4 pe baza regulilor de aici: https://en.wikipedia.org/wiki/Connect_Four 
+To implement the classic connect 4 game based on the rules here: https://en.wikipedia.org/wiki/Connect_Four 
 
-Doi utilizatori vor juca la același calculator. Mutările se vor face dând click pe celula corespunzătoare de pe tabla de joc.
+Two users will play on the same computer. The moves will be made by clicking on the corresponding cell on the game board.
 
-În momentul în care jocul este finalizat utilizatorii nu mai pot face mutări noi.
+Once the game is over, users can no longer make new moves.
+```
+
+
+You can check the game [here](https://benevolent-youtiao-962f4a.netlify.app/).
