@@ -99,7 +99,6 @@ function checkHorizontally(id) {
         elementsCount++;
     }
     if (elementsCount > 3) {
-        console.log("Check orizontal", elementsCount);
         endGame = true;
         showWinner(`The winner is Player ${playerRound + 1}`);
     }
@@ -118,7 +117,6 @@ function checkVertical(id) {
         elementsCount++;
     }
     if (elementsCount > 3) {
-        console.log("Check vertical", elementsCount);
         endGame = true;
         showWinner(`The winner is Player ${playerRound + 1}`);
     }
@@ -141,7 +139,6 @@ function checkOnPrincipalDiagonal(id) {
         row++;
     }
     if (elementsCount > 3) {
-        console.log("Check PrinDiag", elementsCount);
         endGame = true;
         showWinner(`The winner is Player ${playerRound + 1}`);
     }
@@ -164,7 +161,6 @@ function checkOnSecondaryDiagonal(id) {
         row--;
     }
     if (elementsCount > 3) {
-        console.log("Check SecDiag", elementsCount);
         endGame = true;
         showWinner(`The winner is Player ${playerRound + 1}`);
     }
