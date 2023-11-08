@@ -18,6 +18,7 @@ function createBoardElements() {
     let id = 0;
     for (let i = 0; i < 6; i++) {
         for (let j = 0; j < 7; j++) {
+            id = `${i}` + `${j}`
             boardElements.appendChild(createOneBoxElement(id));
             id++;
         }
@@ -43,23 +44,25 @@ function createBoardMatrix(columns, rows, newMatrix) {
 
 //function update matrix values
 function updateMatrixValues(id) {
-    boardMatrix[Math.floor(id / 7)][id % 7] = playerRound;
-}
+    let row = id.charAt(0);
+    let col = id.charAt(1);
+    boardMatrix[row][col] = playerRound;
+};
 
 // create one Box element
-function createOneBoxElement(id) { 
+function createOneBoxElement(id) {
     let elementParent = document.createElement("div");
     let elementChild = document.createElement("div");
     elementParent.classList.add("unit", "bg-info");
     elementChild.classList.add("subunit", "bg-light");
     elementChild.id = id;
-    elementChild.onclick =function () {onclickBoard(id)};
+    elementChild.onclick = function () {onClickBoard(id)};
     elementParent.appendChild(elementChild);
     return elementParent;
 };
 
 // function to do at onclick on board
-function onclickBoard(id) {
+function onClickBoard(id) {
     if (document.getElementById(id).classList.contains("bg-light") && !endGame) {
         addColor(id);
         updateMatrixValues(id);
@@ -85,14 +88,18 @@ function checkGame(id) {
 // functions in check game
 function checkHorizontally(id) {
     let elementsCount = 0;
-    let row = Math.floor(id / 7);
-    for (let i = id % 7; i >= 0 && boardMatrix[row][i] === playerRound; i--) {
+    let row = id.charAt(0);
+    let col = id.charAt(1);
+    for (let i = col; i >= 0 && boardMatrix[row][i] === playerRound; i--) {
         elementsCount++;
     }
-    for (let i = id % 7 + 1; i < 7 && boardMatrix[row][i] === playerRound; i++) {
+    row = id.charAt(0);
+    col = id.charAt(1);
+    for (let i = col + 1; i < 7 && boardMatrix[row][i] === playerRound; i++) {
         elementsCount++;
     }
     if (elementsCount > 3) {
+        console.log("Check orizontal", elementsCount);
         endGame = true;
         showWinner(`The winner is Player ${playerRound + 1}`);
     }
@@ -100,14 +107,18 @@ function checkHorizontally(id) {
 
 function checkVertical(id) {
     let elementsCount = 0;
-    let col = id % 7;
-    for (let i = Math.floor(id / 7); i >= 0 && boardMatrix[i][col] === playerRound; i--) {
+    let row = id.charAt(0);
+    let col = id.charAt(1);
+    for (let i = row; i >= 0 && boardMatrix[i][col] === playerRound; i--) {
         elementsCount++;
     }
-    for (let i = Math.floor(id / 7) + 1; i < 6 && boardMatrix[i][col] === playerRound; i++) {
+    row = id.charAt(0);
+    col = id.charAt(1);
+    for (let i = row + 1; i < 6 && boardMatrix[i][col] === playerRound; i++) {
         elementsCount++;
     }
     if (elementsCount > 3) {
+        console.log("Check vertical", elementsCount);
         endGame = true;
         showWinner(`The winner is Player ${playerRound + 1}`);
     }
@@ -115,21 +126,22 @@ function checkVertical(id) {
 
 function checkOnPrincipalDiagonal(id) {
     let elementsCount = 0;
-    let col = id % 7;
-    let row = Math.floor(id / 7);
+    let row = id.charAt(0);
+    let col = id.charAt(1);
     while (col >= 0 && row >= 0 && boardMatrix[row][col] === playerRound) {
         elementsCount++;
         col--;
         row--;
     }
-    col = id % 7 + 1;
-    row = Math.floor(id / 7) + 1;
+    row = id.charAt(0) + 1;
+    col = id.charAt(1) + 1;
     while (col < 7 && row < 6 && boardMatrix[row][col] === playerRound) {
         elementsCount++;
         col++;
         row++;
     }
     if (elementsCount > 3) {
+        console.log("Check PrinDiag", elementsCount);
         endGame = true;
         showWinner(`The winner is Player ${playerRound + 1}`);
     }
@@ -137,21 +149,22 @@ function checkOnPrincipalDiagonal(id) {
 
 function checkOnSecondaryDiagonal(id) {
     let elementsCount = 0;
-    let col = id % 7;
-    let row = Math.floor(id / 7);
+    let row = id.charAt(0);
+    let col = id.charAt(1);
     while (col >= 0 && row < 6 && boardMatrix[row][col] === playerRound) {
         elementsCount++;
         col--;
         row++;
     }
-    col = id % 7 + 1;
-    row = Math.floor(id / 7) - 1;
+    row = id.charAt(0) - 1;
+    col = id.charAt(1) + 1;
     while (col < 7 && row >= 0 && boardMatrix[row][col] === playerRound) {
         elementsCount++;
         col++;
         row--;
     }
     if (elementsCount > 3) {
+        console.log("Check SecDiag", elementsCount);
         endGame = true;
         showWinner(`The winner is Player ${playerRound + 1}`);
     }
