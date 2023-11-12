@@ -96,6 +96,9 @@ function checkHorizontally(id) {
     row = id.charAt(0);
     col = id.charAt(1);
     for (let i = col + 1; i < 7 && boardMatrix[row][i] === playerRound; i++) {
+        if (elementsCount == 0) { 
+            elementsCount++;
+        }
         elementsCount++;
     }
     if (elementsCount > 3) {
@@ -114,6 +117,9 @@ function checkVertical(id) {
     row = id.charAt(0);
     col = id.charAt(1);
     for (let i = row + 1; i < 6 && boardMatrix[i][col] === playerRound; i++) {
+        if (elementsCount == 0) { 
+            elementsCount++;
+        }
         elementsCount++;
     }
     if (elementsCount > 3) {
@@ -134,6 +140,9 @@ function checkOnPrincipalDiagonal(id) {
     row = id.charAt(0) + 1;
     col = id.charAt(1) + 1;
     while (col < 7 && row < 6 && boardMatrix[row][col] === playerRound) {
+        if (elementsCount == 0) { 
+            elementsCount++;
+        }
         elementsCount++;
         col++;
         row++;
@@ -156,6 +165,9 @@ function checkOnSecondaryDiagonal(id) {
     row = id.charAt(0) - 1;
     col = id.charAt(1) + 1;
     while (col < 7 && row >= 0 && boardMatrix[row][col] === playerRound) {
+        if (elementsCount == 0) { 
+            elementsCount++;
+        }
         elementsCount++;
         col++;
         row--;
