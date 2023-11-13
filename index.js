@@ -88,17 +88,12 @@ function checkGame(id) {
 // functions in check game
 function checkHorizontally(id) {
     let elementsCount = 0;
-    let row = id.charAt(0);
-    let col = id.charAt(1);
+    let row = Number(id.charAt(0));
+    let col = Number(id.charAt(1));
     for (let i = col; i >= 0 && boardMatrix[row][i] === playerRound; i--) {
         elementsCount++;
     }
-    row = id.charAt(0);
-    col = id.charAt(1);
     for (let i = col + 1; i < 7 && boardMatrix[row][i] === playerRound; i++) {
-        if (elementsCount == 0) { 
-            elementsCount++;
-        }
         elementsCount++;
     }
     if (elementsCount > 3) {
@@ -109,17 +104,12 @@ function checkHorizontally(id) {
 
 function checkVertical(id) {
     let elementsCount = 0;
-    let row = id.charAt(0);
-    let col = id.charAt(1);
+    let row = Number(id.charAt(0));
+    let col = Number(id.charAt(1));
     for (let i = row; i >= 0 && boardMatrix[i][col] === playerRound; i--) {
         elementsCount++;
     }
-    row = id.charAt(0);
-    col = id.charAt(1);
     for (let i = row + 1; i < 6 && boardMatrix[i][col] === playerRound; i++) {
-        if (elementsCount == 0) { 
-            elementsCount++;
-        }
         elementsCount++;
     }
     if (elementsCount > 3) {
@@ -130,19 +120,16 @@ function checkVertical(id) {
 
 function checkOnPrincipalDiagonal(id) {
     let elementsCount = 0;
-    let row = id.charAt(0);
-    let col = id.charAt(1);
+    let row = Number(id.charAt(0));
+    let col = Number(id.charAt(1));
     while (col >= 0 && row >= 0 && boardMatrix[row][col] === playerRound) {
         elementsCount++;
         col--;
         row--;
     }
-    row = id.charAt(0) + 1;
-    col = id.charAt(1) + 1;
+    row = Number(id.charAt(0)) + 1;
+    col = Number(id.charAt(1)) + 1;
     while (col < 7 && row < 6 && boardMatrix[row][col] === playerRound) {
-        if (elementsCount == 0) { 
-            elementsCount++;
-        }
         elementsCount++;
         col++;
         row++;
@@ -155,19 +142,16 @@ function checkOnPrincipalDiagonal(id) {
 
 function checkOnSecondaryDiagonal(id) {
     let elementsCount = 0;
-    let row = id.charAt(0);
-    let col = id.charAt(1);
+    let row = Number(id.charAt(0));
+    let col = Number(id.charAt(1));
     while (col >= 0 && row < 6 && boardMatrix[row][col] === playerRound) {
         elementsCount++;
         col--;
         row++;
     }
-    row = id.charAt(0) - 1;
-    col = id.charAt(1) + 1;
+    row = Number(id.charAt(0)) - 1;
+    col = Number(id.charAt(1)) + 1;
     while (col < 7 && row >= 0 && boardMatrix[row][col] === playerRound) {
-        if (elementsCount == 0) { 
-            elementsCount++;
-        }
         elementsCount++;
         col++;
         row--;
